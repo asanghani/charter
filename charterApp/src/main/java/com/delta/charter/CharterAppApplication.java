@@ -24,7 +24,7 @@ public class CharterAppApplication implements CommandLineRunner {
 	public static void main(String[] args) {
 		SpringApplication.run(CharterAppApplication.class, args);
 	}
-
+//test commit
 	@Override
 	public void run(String... arg0) throws Exception {
 		/*CharterUser chuser = new CharterUser();
