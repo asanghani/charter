@@ -1,0 +1,9 @@
+<md-toolbar class="nav-theme">
+ 
+  <span class="example-spacer"></span>
+  <span [hidden]="!loggedIn"><a md-button class="font-theme">Users</a></span>
+  <span [hidden]="!loggedIn"><a md-button class="font-theme">Teams</a></span>
+  <span [hidden]="!loggedIn"><a md-button class="font-theme">Flights</a></span>
+  <span [hidden]="!loggedIn"><a md-button class="font-theme">Passengers</a></span>
+  <span [hidden]="!loggedIn"><a md-button (click)="logout()" class="font-theme">Logout</a></span>
+</md-toolbar>
