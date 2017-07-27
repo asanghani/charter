@@ -1,7 +1,8 @@
 import { ModuleWithProviders } from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {LoginComponent} from './components/login/login.component';
-
+import { AddNewCharteruserComponent } from './components/add-new-charteruser/add-new-charteruser.component';
+import { UserListComponent} from './components/user-list/user-list.component';
 const appRoutes: Routes = [
     {
         path : '',
@@ -11,6 +12,15 @@ const appRoutes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'addUser',
+        component: AddNewCharteruserComponent
+
+    },
+    {
+        path: 'userList',
+        component: UserListComponent
     }
 ];
 

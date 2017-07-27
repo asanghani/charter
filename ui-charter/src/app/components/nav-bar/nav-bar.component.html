@@ -1,7 +1,8 @@
 <md-toolbar class="nav-theme">
  
   <span class="example-spacer"></span>
-  <span [hidden]="!loggedIn"><a md-button class="font-theme">Users</a></span>
+  <span [hidden]="!loggedIn"><a md-button class="font-theme" routerLink="/addUser">AddUser</a></span>
+  <span [hidden]="!loggedIn"><a md-button class="font-theme" routerLink="/userList">ViewUsers</a></span>
   <span [hidden]="!loggedIn"><a md-button class="font-theme">Teams</a></span>
   <span [hidden]="!loggedIn"><a md-button class="font-theme">Flights</a></span>
   <span [hidden]="!loggedIn"><a md-button class="font-theme">Passengers</a></span>

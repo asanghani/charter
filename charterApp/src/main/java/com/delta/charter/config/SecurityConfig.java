@@ -54,7 +54,7 @@ public DaoAuthenticationProvider authenticationProvider() {
 			"/js/**",
 			"/image/**",
 			"/team/**",
-			"/user/**",
+			"/charteruser/**",
 	};
 	
 	@Override

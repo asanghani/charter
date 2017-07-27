@@ -1,0 +1,39 @@
+<div class="container">
+	<div class="table-responsive" style="margin-top: 30px;">
+		<table id="userListTable" class="table bordered highlight">
+			<thead>
+				<tr>
+					<th>
+						<input type="checkbox" (change)="updateSelected($event.target.checked)" />
+					</th>
+					<th>Email</th>
+					<th>FirstName</th>
+					<th>LastName</th>
+					<th>Role</th>
+					<th>MobileNumber</th>
+          <th>OfficeNumber</th>
+          <th>Operation</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor = "let user of userList1">
+					<td>
+						<input hidden="hidden" name="id" />
+						<input type="checkbox" [checked]="allChecked" (change)="updateRemoveUserList($event.target.checked, user)" />
+					</td>
+					<td><a (click)="onSelect(user)" style="cursor:pointer">{{user.username}}</a></td>
+					<td>{{user.firstname}}</td>
+					<td>{{user.lastname}}</td>
+					<td>{{user.rolid}}</td>
+					<td>{{user.mobilenumber}}</td>
+					<td>{{user.officenumber}}</td>
+					<td>
+						<input hidden="hidden" name="username" />
+						<button md-button (click)="openDialog(user)" value="delete"><span class="fa fa-times"></span> delete</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<button md-raised-button class="mat-warn" id="deleteSelected" (click)="removeSelectedUsers()">Delete Selected</button>
+</div>

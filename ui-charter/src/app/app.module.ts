@@ -6,31 +6,40 @@ import { routing } from './app.routing';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
+import { LoginService } from './services/login.service';
+import {CharteruserService } from './services/charteruser.service';
+import { GetUserListService} from './services/get-user-list.service';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LoginComponent } from './components/login/login.component';
-
-import { LoginService } from './services/login.service';
+import { AddNewCharteruserComponent } from './components/add-new-charteruser/add-new-charteruser.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    LoginComponent
+    LoginComponent,
+    AddNewCharteruserComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     routing,
-    BrowserAnimationsModule,
+   BrowserAnimationsModule,
     NoopAnimationsModule,
     MaterialModule
   ],
   providers: [
-    LoginService
+    LoginService,
+    CharteruserService,
+    GetUserListService
 
   ],
   bootstrap: [AppComponent]

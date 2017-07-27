@@ -1,0 +1,72 @@
+<div class="container">
+  <div [hidden]="charterUserAdded">
+    <h3 style="margin-top: 30px;">charterUser Information <span style="font-size:small">* is a required field</span></h3>
+
+    <form (ngSubmit)="onSubmit()">
+      <md-grid-list cols="4" rowHeight="60px">
+        <md-grid-tile [colspan]="4" [rowspan]="1">
+          <md-input-container>
+            <input mdInput id="cuser" type="text" required [(ngModel)]="newcharteruser.username" name="cusername" placeholder="Email">
+          </md-input-container>
+        </md-grid-tile>
+      </md-grid-list>
+
+       <md-grid-list cols="4" rowHeight="60px">
+        <md-grid-tile [colspan]="2" [rowspan]="1">
+          <md-input-container>
+            <input mdInput id="firstname" type="text" required [(ngModel)]="newcharteruser.firstname" name="firstname" placeholder="FirstName">
+          </md-input-container>
+        </md-grid-tile>
+         <md-grid-tile [colspan]="2" [rowspan]="1">
+          <md-input-container>
+            <input mdInput id="lastname" type="text" required [(ngModel)]="newcharteruser.lastname" name="lastname" placeholder="LastName">
+          </md-input-container>
+        </md-grid-tile>
+      </md-grid-list>
+
+       <md-grid-list cols="4" rowHeight="60px">
+        <md-grid-tile [colspan]="2" [rowspan]="1">
+          <md-select placeholder="Role" id="roldid" name="roldid" required [(ngModel)]="newcharteruser.roldid">
+						<md-option value="0">Super Admin</md-option>
+						<md-option value="1">Charter Admim</md-option>
+						<md-option value="2">Charter Planner</md-option>
+						<md-option value="3">Tream Travel Director</md-option>
+					</md-select>
+        </md-grid-tile>
+      </md-grid-list>
+
+       <md-grid-list cols="4" rowHeight="60px">
+        <md-grid-tile [colspan]="2" [rowspan]="1">
+          <md-input-container>
+            <input mdInput id="mobilenumber" type="number" required [(ngModel)]="newcharteruser.mobilenumber" name="mobilenumber" placeholder="MobileNumber">
+          </md-input-container>
+        </md-grid-tile>
+         <md-grid-tile [colspan]="2" [rowspan]="1">
+          <md-input-container>
+            <input mdInput id="officenumber" type="number" required [(ngModel)]="newcharteruser.officenumber" name="officenumber" placeholder="OfficeNumber">
+          </md-input-container>
+        </md-grid-tile>
+      </md-grid-list>
+
+       <md-grid-list cols="4" rowHeight="60px">
+        <md-grid-tile [colspan]="4" [rowspan]="1">
+          <md-input-container>
+            <input mdInput id="password" type="text" required [(ngModel)]="newcharteruser.password" name="cusername" placeholder="password">
+          </md-input-container>
+        </md-grid-tile>
+      </md-grid-list>
+
+       <md-grid-list cols="20" rowHeight="60px">
+        <md-grid-tile [colspan]="2" [rowspan]="1">
+          <button class="mat-primary" md-raised-button type="submit">Add Book</button>
+        </md-grid-tile>
+         <md-grid-tile [colspan]="2" [rowspan]="1">
+          <a class="mat-warn" md-raised-button routerLink="/">Cancle</a>
+        </md-grid-tile>
+      </md-grid-list>
+
+       
+
+    </form>
+  </div>
+</div>
