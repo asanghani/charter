@@ -55,7 +55,7 @@ public DaoAuthenticationProvider authenticationProvider() {
 			"/image/**",
 			"/team/**",
 			"/charteruser/**",
-			//test commit
+			//test commit1
 	};
 	
 	@Override
