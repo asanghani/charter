@@ -14,7 +14,7 @@ import com.delta.charter.service.UserService;
 
 @SpringBootApplication
 public class CharterAppApplication implements CommandLineRunner {
-	//test commit
+
 	@Autowired
 	private UserService userService;
 	
