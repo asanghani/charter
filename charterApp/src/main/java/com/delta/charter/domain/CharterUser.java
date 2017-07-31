@@ -84,9 +84,7 @@ public class CharterUser implements UserDetails, Serializable{
 		return password;
 	}
 	
-	
-	
-	
+
 	//-------------Overridden method from UserDetails
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
