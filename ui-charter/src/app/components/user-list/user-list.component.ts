@@ -12,22 +12,26 @@ import { GetUserListService} from '../../services/get-user-list.service';
 export class UserListComponent implements OnInit {
   private selectdUser : Charteruser;
   private checked:boolean;
-  private userList1: Charteruser[];
+  private userList: Charteruser[];
   private allChecked: boolean;
   private removeUserList: Charteruser[] = new Array();
 
   constructor(
-
-    private GetUserListService: GetUserListService,
+    private getUserListService: GetUserListService,
     private router:Router
   ) { }
 
-  ngOnInit() {
+  onSelect(cuser:Charteruser) {
+    this.selectdUser=cuser;
+    console.log(this.selectdUser.username);
+    this.router.navigate(['/viewUser', this.selectdUser.username]);
+  }
 
-    this.GetUserListService.getUserList().subscribe(
+  ngOnInit() {
+    this.getUserListService.getUserList().subscribe(
       res => {
         console.log(res.json());
-        this.userList1=res.json();
+        this.userList=res.json();
       },
       error =>{
         console.log(error);

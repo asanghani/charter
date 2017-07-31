@@ -9,4 +9,6 @@ public interface UserService extends JpaRepository<CharterUser, Long>{
 	
 	CharterUser createUser(CharterUser charterUser);
 
+	CharterUser findByusername(String username);
+
 }

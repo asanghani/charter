@@ -1,0 +1,36 @@
+<div class="container">	
+	<div style="margin-top: 20px;">
+		<a routerLink="/userList"><i class="fa fa-long-arrow-left"></i> Go Back</a>
+		<span> / </span>
+		<a (click)="onSelect(user)" style="cursor: pointer">Edit</a>
+	</div>
+	<md-grid-list cols="9" rowHeight="100px">
+		<md-grid-tile [colspan]="0">
+			<h3>{{user.username}}</h3>
+		</md-grid-tile>
+		<md-grid-tile [colspan]="3" [rowspan]="3">
+			<md-list>
+				<md-list-item>
+					<p><strong>Email: </strong>{{user.username}}</p>
+				</md-list-item>
+				<md-list-item>
+					<p><strong>FirstName: </strong>{{user.firstname}}</p>
+				</md-list-item>
+				<md-list-item>
+					<p><strong>LastName: </strong>{{user.lastname}}</p>
+				</md-list-item>
+				<md-list-item>
+					<p><strong>RoleName: </strong>{{user.roldid}}</p>
+				</md-list-item>
+				<md-list-item>
+					<p><strong>MobileNumber: </strong>{{user.mobilenumber}}</p>
+				</md-list-item>
+				<md-list-item>
+					<p><strong>OfficeNumber: </strong>{{user.officenumber}}</p>
+				</md-list-item>
+			</md-list>
+		</md-grid-tile>
+	
+		
+	</md-grid-list>
+</div>

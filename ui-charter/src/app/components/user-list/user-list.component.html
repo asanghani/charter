@@ -16,12 +16,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor = "let user of userList1">
+				<tr *ngFor = "let user of userList">
 					<td>
-						<input hidden="hidden" name="id" />
+						<input hidden="hidden" name="username" />
 						<input type="checkbox" [checked]="allChecked" (change)="updateRemoveUserList($event.target.checked, user)" />
 					</td>
-					<td><a (click)="onSelect(user)" style="cursor:pointer">{{user.username}}</a></td>
+					<td><button (click)="onSelect(user)" style="cursor:pointer">
+						{{user.username}}</button></td>
 					<td>{{user.firstname}}</td>
 					<td>{{user.lastname}}</td>
 					<td>{{user.rolid}}</td>

@@ -9,6 +9,8 @@ import 'hammerjs';
 import { LoginService } from './services/login.service';
 import {CharteruserService } from './services/charteruser.service';
 import { GetUserListService} from './services/get-user-list.service';
+import { GetUserService} from './services/get-user.service';
+import { EditUserService} from './services/edit-user.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -18,6 +20,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LoginComponent } from './components/login/login.component';
 import { AddNewCharteruserComponent } from './components/add-new-charteruser/add-new-charteruser.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { VeiwUserComponent } from './components/veiw-user/veiw-user.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,9 @@ import { UserListComponent } from './components/user-list/user-list.component';
     NavBarComponent,
     LoginComponent,
     AddNewCharteruserComponent,
-    UserListComponent
+    UserListComponent,
+    VeiwUserComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,9 @@ import { UserListComponent } from './components/user-list/user-list.component';
   providers: [
     LoginService,
     CharteruserService,
-    GetUserListService
+    GetUserListService,
+    GetUserService,
+    EditUserService
 
   ],
   bootstrap: [AppComponent]

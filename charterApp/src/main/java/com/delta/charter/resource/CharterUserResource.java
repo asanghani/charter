@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,5 +42,16 @@ public class CharterUserResource {
 	public List<CharterUser> getUserList(){
 		return userService.findAll();
 		
+	}
+	
+	@RequestMapping(value="/{username}")
+	public CharterUser getUser(@PathVariable("username") String username){
+		CharterUser cuser = userService.findByusername(username);
+		return cuser;
+	}
+	
+	@RequestMapping(value="/updateUser", method=RequestMethod.POST)
+	public CharterUser updateUserPost(@RequestBody CharterUser charterUser){
+		return userService.createUser(charterUser);
 	}
 }
