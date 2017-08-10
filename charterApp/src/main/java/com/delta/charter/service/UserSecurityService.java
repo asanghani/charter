@@ -9,7 +9,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.delta.charter.domain.CharterUser;
-import com.delta.charter.repository.UserRepository;
+import com.delta.charter.repository.UserJpaRepository;
+
 
 @Service
 public class UserSecurityService implements UserDetailsService {
@@ -17,11 +18,11 @@ public class UserSecurityService implements UserDetailsService {
 	private static final Logger LOG = LoggerFactory.getLogger(UserSecurityService.class);
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UserJpaRepository userJpaRepository;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		CharterUser charterUser = userRepository.findByusername(username);
+		CharterUser charterUser = userJpaRepository.findByusername(username);
 		if(null == charterUser){
 			LOG.warn("username {} not found", username);
 			throw new UsernameNotFoundException("username "+ username + "not found");

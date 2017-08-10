@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -29,6 +30,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private UserSecurityService userSecurityService;
 	
+	@Bean
+	public JdbcTemplate jdbcTemplate(DataSource dataSource){
+	        return new JdbcTemplate(dataSource);
+	    }
+
 	private BCryptPasswordEncoder passwordEncoder(){
 		return SecurityUtility.passwordEncoder();
 	}

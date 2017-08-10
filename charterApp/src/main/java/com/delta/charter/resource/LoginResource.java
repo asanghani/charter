@@ -18,9 +18,9 @@ import com.delta.charter.service.UserService;
 
 
 
-@RestController
+//@RestController
 public class LoginResource {
-	@Autowired
+	/*@Autowired
 	private UserService userService;
 	
 	@RequestMapping("/token")
@@ -45,5 +45,5 @@ public class LoginResource {
 	public ResponseEntity logout(){
 		SecurityContextHolder.clearContext();
 		return new ResponseEntity("Logout Successfully!", HttpStatus.OK);
-	}
+	}*/
 }

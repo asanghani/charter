@@ -25,14 +25,14 @@ import com.delta.charter.service.UserService;
 
 
 
-@RestController
-@RequestMapping("/charteruser")
+/*@RestController
+@RequestMapping("/charteruser")*/
 public class CharterUserResource {
 	
-	@Autowired
-	private UserService userService;
+	/*@Autowired
+	private UserService userService;*/
 	
-	@RequestMapping(value="/addUser", method=RequestMethod.POST)
+	/*@RequestMapping(value="/addUser", method=RequestMethod.POST)
 	public CharterUser addUserPost(@RequestBody CharterUser charterUser){
 		charterUser.setPassword(SecurityUtility.passwordEncoder().encode(charterUser.getPassword()));
 		return userService.createUser(charterUser);
@@ -53,5 +53,5 @@ public class CharterUserResource {
 	@RequestMapping(value="/updateUser", method=RequestMethod.POST)
 	public CharterUser updateUserPost(@RequestBody CharterUser charterUser){
 		return userService.createUser(charterUser);
-	}
+	}*/
 }
