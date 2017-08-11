@@ -45,7 +45,7 @@ public class CharterAppApplication implements CommandLineRunner {
 		user.setPassword(SecurityUtility.passwordEncoder().encode("p"));
 		user.setRoleid(0);
 //		user.setSeqnumber(1);
-		userService.createUser(user);
+//		userService.createUser(user);
 	//	userService.updateUser(user);
 	//	userService.deleteUser("alpesh");
 		/*	//user.setPassword("alpesh");
