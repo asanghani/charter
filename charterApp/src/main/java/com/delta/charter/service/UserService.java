@@ -18,4 +18,8 @@ public interface UserService{
 	
 	List<CharterUser> findAll();
 	
+	CharterUser updateUser(CharterUser charterUser);
+	
+	void deleteUser(String username);
+	
 }

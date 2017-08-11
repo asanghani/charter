@@ -49,7 +49,12 @@ public class CharterUserController {
 	
 	@RequestMapping(value="/updateUser", method=RequestMethod.POST)
 	public CharterUser updateUserPost(@RequestBody CharterUser charterUser){
-		return userService.createUser(charterUser);
+		return userService.updateUser(charterUser);
+	}
+	
+	@RequestMapping(value="/removeUser", method=RequestMethod.POST)
+	public CharterUser deleteUser(@RequestBody CharterUser charterUser){
+		return userService.updateUser(charterUser);
 	}
 
 }

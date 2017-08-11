@@ -34,19 +34,30 @@ private static final Logger LOG = LoggerFactory.getLogger(UserServiceImpl.class)
 	}
 
 	@Override
+	@Transactional
 	public CharterUser findByusername(String username) {
 		CharterUser user = userJpaRepository.findByusername(username);
 		return user;
 	}
 
 	@Override
+	@Transactional
 	public List<CharterUser> findAll() {
 		List<CharterUser> userList = userJpaRepository.findAll();
 		return userList;
 	}
 	
+	@Override
+	public CharterUser updateUser(CharterUser charterUser) {
+		userJdbcRepository.updateUser(charterUser);
+		return charterUser;
+	}
 	
-	
+	@Override
+	@Transactional
+	public void deleteUser(String username) {
+		userJpaRepository.deleteByusername(username);
+	}
 	
 	
 	

@@ -9,10 +9,21 @@ import com.delta.charter.domain.CharterUser;
 
 
 public interface UserJpaRepository extends JpaRepository<CharterUser, Long> {
+	
 	List<CharterUser> findAll();
+	
 	CharterUser findByusername(String username);
-//  save(UserRole role);
+	
+	void deleteByusername (String username);
+	
+	List<CharterUser> deleteByLastname(String username); //need to test
 
+	
+	
+	
+	
+	
+	
 	
 	/*@Query("SELECT p FROM Person p WHERE LOWER(p.lastName) = LOWER(:lastName)")
 	 @Query("INSERT p FROM Person p WHERE LOWER(p.lastName) = LOWER(:lastName)")

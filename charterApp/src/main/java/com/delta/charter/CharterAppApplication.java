@@ -37,14 +37,17 @@ public class CharterAppApplication implements CommandLineRunner {
 		System.out.println("Profile:---->" + env);
 		
 		CharterUser user = new CharterUser();
-	    user.setUsername("m");;
+	    user.setUsername("a");;
 		user.setFirstname("Alpesh");
 		user.setLastname("Sanghani");
 		user.setMobilenumber(614440023);
 		user.setOfficenumber(614440023);
 		user.setPassword(SecurityUtility.passwordEncoder().encode("p"));
 		user.setRoleid(0);
-	//	userService.createUser(user);
+//		user.setSeqnumber(1);
+		userService.createUser(user);
+	//	userService.updateUser(user);
+	//	userService.deleteUser("alpesh");
 		/*	//user.setPassword("alpesh");
 		jdbcTemplate.update("INSERT INTO charter_user_Jdbc (username,firstname,lastname,roleId,mobilenumber,officenumber,password) "
 				+ "VALUES(?,?,?,?,?,?,?)",

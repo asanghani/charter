@@ -29,6 +29,7 @@ public class CharterUser implements UserDetails, Serializable{
 	private int mobilenumber;
 	private int officenumber;
 	private String password;
+	private int seqnumber;
 	//private boolean enabled = true;
 	
 	public CharterUser(){}
@@ -44,6 +45,12 @@ public class CharterUser implements UserDetails, Serializable{
 	
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public int getSeqnumber() {
+		return seqnumber;
+	}
+	public void setSeqnumber(int seqnumber) {
+		this.seqnumber = seqnumber;
 	}
 	public String getFirstname() {
 		return firstname;
@@ -83,7 +90,6 @@ public class CharterUser implements UserDetails, Serializable{
 		// TODO Auto-generated method stub
 		return password;
 	}
-	
 
 	//-------------Overridden method from UserDetails
 	@Override
