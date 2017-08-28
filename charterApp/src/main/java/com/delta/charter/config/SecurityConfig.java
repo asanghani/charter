@@ -39,32 +39,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		return SecurityUtility.passwordEncoder();
 	}
 	
-	/*@Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userSecurityService)
-                .passwordEncoder(passwordEncoder())
-                .and()
-                .authenticationProvider(authenticationProvider());
-    }
-
-@Bean
-public DaoAuthenticationProvider authenticationProvider() {
-    DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-    authenticationProvider.setUserDetailsService(userSecurityService);
-    authenticationProvider.setPasswordEncoder(passwordEncoder());
-    return authenticationProvider;
-}*/
+	@Autowired
+	DataSource dataSource;
 	
-	private static final String[] PUBLIC_MATCHERS = {
+	/*private static final String[] PUBLIC_MATCHERS = {
 			"/css/**",
 			"/js/**",
 			"/image/**",
 			"/team/**",
 			"/charteruser/**",
-			//test commit1
+			//Thymleaf test
+			"/login",
+			
+	};*/
+	
+	private static final String[] PUBLIC_MATCHERS = {
+			"/css/**",
+			"/js/**",
+			"/image/**",
+			"/charteruser/**",
+			/*"/token",
+			"/checkSession",
+			"/user/logout",*/
 	};
 	
-	@Override
+	/*@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().cors().disable().httpBasic().and()
 		.authorizeRequests().antMatchers(PUBLIC_MATCHERS).permitAll().anyRequest().authenticated();
@@ -73,7 +72,29 @@ public DaoAuthenticationProvider authenticationProvider() {
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userSecurityService).passwordEncoder(passwordEncoder());
+	}*/
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.csrf().disable().cors().disable().httpBasic().and().authorizeRequests()
+
+		.antMatchers(PUBLIC_MATCHERS).permitAll().anyRequest().authenticated(); 
+/*//		.antMatchers("/admin").access("hasRole('ROLE_ADMIN')") //thymleaf test-only with ADMIN role user can access this page
+//		.antMatchers("/welcome").access("hasRole('ROLE_USER')")//thymleaf test-only with USER role user can access this page
+//		.antMatchers("/charterAdmin/**").access("hasRole('ROLE_ADMIN')") //For angular user to have ADMIN role only
+//		.anyRequest().authenticated();     //ALL OTHER THYMLEAF OR ANGULAR USER CAN ACCESS OTHER PAGES(ALL User role from anuglar or thyleaf allow )
+*/		
 	}
+	
+	@Autowired
+	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+		
+	  auth.jdbcAuthentication().dataSource(dataSource)
+		.usersByUsernameQuery(
+				"select username,password,enabled,firstname,lastname,mobilenumber,officenumber from charter_user where username=?")
+		.authoritiesByUsernameQuery(
+			    "select username, role from user_roles where username=?");
+	}	
 	
 	@Bean
 	public HttpSessionStrategy httpSessionStrategy(){

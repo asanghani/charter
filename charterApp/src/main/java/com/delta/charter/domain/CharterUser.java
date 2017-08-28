@@ -25,17 +25,13 @@ public class CharterUser implements UserDetails, Serializable{
 	private String username;
 	private String firstname;
 	private String lastname;
-	private int roleid;
 	private int mobilenumber;
 	private int officenumber;
 	private String password;
 	private int seqnumber;
-	//private boolean enabled = true;
-	
+	private boolean enabled = true;
+
 	public CharterUser(){}
-	
-	
-	
 	
 	/*@ElementCollection(targetClass=Integer.class)
 	private Set<UserRole> userRoles1 = new HashSet<>();*/
@@ -64,12 +60,6 @@ public class CharterUser implements UserDetails, Serializable{
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-	public int getRoleid() {
-		return roleid;
-	}
-	public void setRoleid(int roleid) {
-		this.roleid = roleid;
-	}
 	public int getMobilenumber() {
 		return mobilenumber;
 	}
@@ -90,7 +80,11 @@ public class CharterUser implements UserDetails, Serializable{
 		// TODO Auto-generated method stub
 		return password;
 	}
-
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
+	
 	//-------------Overridden method from UserDetails
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

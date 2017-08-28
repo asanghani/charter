@@ -17,16 +17,16 @@ public class UserJdbcRepositoryImpl implements UserJdbcRepository  {
 	@Override
 	public void createUser(CharterUser user) {
 		jdbcTemplate.update
-		("INSERT INTO charter_user (username,firstname,lastname,roleId,mobilenumber,officenumber,password) " + 
-		"VALUES(?,?,?,?,?,?,?)",
-		new Object[] { user.getUsername(),user.getFirstname(),user.getLastname(),user.getRoleid(),user.getMobilenumber(),
+		("INSERT INTO charter_user (username,firstname,lastname,mobilenumber,officenumber,password) " + 
+		"VALUES(?,?,?,?,?,?)",
+		new Object[] { user.getUsername(),user.getFirstname(),user.getLastname(),user.getMobilenumber(),
 				       user.getOfficenumber(),user.getPassword()});
 	}
 	
 	@Override
 	public void updateUser(CharterUser user){
-		String sql = "update charter_user set username = ?,firstname = ?,lastname = ?,roleId = ?,mobilenumber = ?,officenumber = ?,password = ? where Seqnumber = ?";
-        jdbcTemplate.update(sql,new Object[]{ user.getUsername(),user.getFirstname(),user.getLastname(),user.getRoleid(),user.getMobilenumber(),
+		String sql = "update charter_user set username = ?,firstname = ?,lastname = ?,mobilenumber = ?,officenumber = ?,password = ? where Seqnumber = ?";
+        jdbcTemplate.update(sql,new Object[]{ user.getUsername(),user.getFirstname(),user.getLastname(),user.getMobilenumber(),
 			       user.getOfficenumber(),user.getPassword(),user.getSeqnumber()});
 	}
 	

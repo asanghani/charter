@@ -36,7 +36,8 @@ export class LoginService {
     let headers = new Headers ({
       'x-auth-token' : localStorage.getItem('xAuthToken')
     });
-
+    console.log(localStorage.getItem('xAuthToken')) //check here....
+    console.log(localStorage.getItem('randid'))
     return this.http.post(url, '', {headers: headers});
   }
 

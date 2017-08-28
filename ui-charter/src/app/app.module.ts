@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
@@ -40,7 +40,8 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     routing,
    BrowserAnimationsModule,
     NoopAnimationsModule,
-    MaterialModule
+    MaterialModule,
+  
   ],
   providers: [
     LoginService,

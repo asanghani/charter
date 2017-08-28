@@ -19,7 +19,10 @@ export class NavBarComponent implements OnInit {
   logout() {
     this.loginService.logout().subscribe(
       res => {
-        location.reload();
+       localStorage.setItem('xAuthToken', '');
+      localStorage.setItem('randid', '');
+        this.loggedIn=false;
+       location.reload();
       },
       error => {
         console.log(error);
@@ -27,15 +30,14 @@ export class NavBarComponent implements OnInit {
     );
     this.router.navigate(['/'])
   }
-
-
   ngOnInit() {
-    this.loginService.checkSession().subscribe(
+   this.loginService.checkSession().subscribe(
       res => {
         this.loggedIn=true;
       },
       error => {
         this.loggedIn=false;
+        this.router.navigate(['/'])
       }
     );
   }

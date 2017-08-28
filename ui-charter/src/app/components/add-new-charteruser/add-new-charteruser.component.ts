@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Charteruser} from '../../models/charteruser';
 import { CharteruserService } from '../../services/charteruser.service';
-
+import { LoginService} from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-new-charteruser',
@@ -9,11 +10,15 @@ import { CharteruserService } from '../../services/charteruser.service';
   styleUrls: ['./add-new-charteruser.component.css']
 })
 export class AddNewCharteruserComponent implements OnInit {
-
+  private loggedIn = false;
   private newcharteruser: Charteruser = new Charteruser();
   private charteruserAdded: boolean;
 
-  constructor(private charteruserService:CharteruserService) { }
+  constructor(
+    private charteruserService:CharteruserService,
+    private loginService:LoginService,
+    private router:Router
+  ) { }
 
   onSubmit(){
 
@@ -28,6 +33,16 @@ export class AddNewCharteruserComponent implements OnInit {
     )
   }
   ngOnInit() {
+    this.loginService.checkSession().subscribe(
+      res => {
+        this.loggedIn=true;
+      },
+      error => {
+        this.loggedIn=false;
+        this.router.navigate(['/'])
+        location.reload();
+      }
+    );
   }
 
 }

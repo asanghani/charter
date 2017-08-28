@@ -37,15 +37,17 @@ public class CharterAppApplication implements CommandLineRunner {
 		System.out.println("Profile:---->" + env);
 		
 		CharterUser user = new CharterUser();
-	    user.setUsername("a");;
+	    user.setUsername("a11");;
 		user.setFirstname("Alpesh");
 		user.setLastname("Sanghani");
 		user.setMobilenumber(614440023);
 		user.setOfficenumber(614440023);
-		user.setPassword(SecurityUtility.passwordEncoder().encode("p"));
-		user.setRoleid(0);
+	//	user.setPassword(SecurityUtility.passwordEncoder().encode("p"));
+		user.setPassword("a");
+		user.setEnabled(false);
+		
 //		user.setSeqnumber(1);
-//		userService.createUser(user);
+	//userService.createUser(user);
 	//	userService.updateUser(user);
 	//	userService.deleteUser("alpesh");
 		/*	//user.setPassword("alpesh");

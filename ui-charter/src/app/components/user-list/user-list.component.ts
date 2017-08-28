@@ -10,6 +10,7 @@ import { GetUserListService} from '../../services/get-user-list.service';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
+  private loggedIn = false;
   private selectdUser : Charteruser;
   private checked:boolean;
   private userList: Charteruser[];
@@ -18,6 +19,7 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private getUserListService: GetUserListService,
+    private loginService:LoginService,
     private router:Router
   ) { }
 
@@ -28,6 +30,18 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit() {
+
+      this.loginService.checkSession().subscribe(
+      res => {
+        this.loggedIn=true;
+      },
+      error => {
+        this.loggedIn=false;
+        this.router.navigate(['/'])
+        location.reload();
+      }
+    );
+
     this.getUserListService.getUserList().subscribe(
       res => {
         console.log(res.json());
