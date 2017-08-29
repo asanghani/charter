@@ -42,35 +42,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	DataSource dataSource;
 	
-	/*private static final String[] PUBLIC_MATCHERS = {
-			"/css/**",
-			"/js/**",
-			"/image/**",
-			"/team/**",
-			"/charteruser/**",
-			//Thymleaf test
-			"/login",
-			
-	};*/
 	
-	private static final String[] PUBLIC_MATCHERS = {
-			"/*/**"
-	};
-
+	//*****************************************Method is use for external web-server
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().cors().disable().httpBasic().and().authorizeRequests()
-		.antMatchers(PUBLIC_MATCHERS).permitAll()
 		.antMatchers("/admin").access("hasRole('ROLE_ADMIN')") 
-		.antMatchers("/checkSession/**").access("hasRole('ROLE_USER')")
-		.antMatchers("/token/**").access("hasRole('ROLE_ADMIN')") 
-		.anyRequest().authenticated()   
-        .and()
-		.formLogin()
-        .loginPage("/index.html")
-        .permitAll(); 
+		.antMatchers("/checkSession").access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/charteruser/*").permitAll() 
+		.anyRequest().authenticated(); 
 	}
 	
+	//******************************************Method is use for Internal web-server
+	/*	@Override
+		protected void configure(HttpSecurity http) throws Exception {
+			http.csrf().disable().cors().disable().httpBasic().and().authorizeRequests()
+			.antMatchers("/admin").access("hasRole('ROLE_ADMIN')") 
+			.antMatchers("/checkSession").access("hasRole('ROLE_ADMIN')")
+			.antMatchers("/charteruser/*").permitAll() 
+			.anyRequest().authenticated(); 
+		  .antMatchers(PUBLIC_MATCHERS).permitAll()
+	       .and()
+			.formLogin()
+	        .loginPage("/index.html")
+	        .permitAll(); 
+		}*/
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 		
@@ -90,6 +86,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 
 
+
+
+//------------------------------------------------------------------------------------------------------------------
+/*private static final String[] PUBLIC_MATCHERS = {
+"/css/**",
+"/js/**",
+"/image/**",
+"/team/**",
+"/charteruser/**",
+//Thymleaf test
+"/login",
+
+};*/
+
+/*private static final String[] PUBLIC_MATCHERS = {
+//"/charteruser/userList"
+};*/
+//----------------------------------------------------------------------------------
 //@Configuration
 //@EnableWebSecurity
 //public class SecurityConfig extends WebSecurityConfigurerAdapter{
