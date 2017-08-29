@@ -61,10 +61,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().cors().disable().httpBasic().and().authorizeRequests()
 		.antMatchers(PUBLIC_MATCHERS).permitAll()
-		.antMatchers("/admin").access("hasRole('ROLE_ADMIN')") //thymleaf test-only with ADMIN role user can access this page
-		.antMatchers("/welcome").access("hasRole('ROLE_USER')")//thymleaf test-only with USER role user can access this page
-		.antMatchers("/charterAdmin/**").access("hasRole('ROLE_ADMIN')") //For angular user to have ADMIN role only
-		.anyRequest().authenticated()    //ALL OTHER THYMLEAF OR ANGULAR USER CAN ACCESS OTHER PAGES(ALL User role from anuglar or thyleaf allow )
+		.antMatchers("/admin").access("hasRole('ROLE_ADMIN')") 
+		.antMatchers("/checkSession/**").access("hasRole('ROLE_USER')")
+		.antMatchers("/token/**").access("hasRole('ROLE_ADMIN')") 
+		.anyRequest().authenticated()   
         .and()
 		.formLogin()
         .loginPage("/index.html")
