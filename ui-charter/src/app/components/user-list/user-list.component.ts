@@ -33,6 +33,7 @@ export class UserListComponent implements OnInit {
 
       this.loginService.checkSession().subscribe(
       res => {
+        console.log("Response:-" + res);
         this.loggedIn=true;
       },
       error => {
