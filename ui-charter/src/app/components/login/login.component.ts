@@ -9,7 +9,7 @@ import { LoginService } from '../../services/login.service';
 export class LoginComponent implements OnInit {
 
   private credential = {'username':'', 'password' :''};
-  private loggedIn = false;
+  private local_loggedIn = false;
 
   constructor(private LoginService: LoginService) { }
 
@@ -18,7 +18,13 @@ export class LoginComponent implements OnInit {
         res=>{
           console.log(res);
           localStorage.setItem("xAuthToken", res.json().token);
-          this.loggedIn = true;
+          localStorage.setItem("glob_loggedIn",'true');
+       // localStorage.removeItem('glob_loggedIn');
+        if (localStorage.getItem("glob_loggedIn") == 'true'){
+          this.local_loggedIn = true;
+        } else {
+          this.local_loggedIn = false;
+        }
           location.reload();
         },
         error => {
@@ -27,15 +33,19 @@ export class LoginComponent implements OnInit {
     );
   }
 
-   ngOnInit() {
+   ngOnInit() { //This method I dont think needed
   	this.LoginService.checkSession().subscribe(
   		res => {
-  			this.loggedIn=true;
+  			if (localStorage.getItem("glob_loggedIn") == 'true'){
+          this.local_loggedIn = true;
+        } else {
+          this.local_loggedIn = false;
+        }
   		},
   		error => {
-  			this.loggedIn=false;
+  			this.local_loggedIn =false;
   		}
   	);
-  }
+   }
 
 }

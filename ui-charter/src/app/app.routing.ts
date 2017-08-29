@@ -5,16 +5,16 @@ import { AddNewCharteruserComponent } from './components/add-new-charteruser/add
 import { UserListComponent} from './components/user-list/user-list.component';
 import { VeiwUserComponent} from './components/veiw-user/veiw-user.component';
 import { EditUserComponent} from './components/edit-user/edit-user.component';
-
+import { CharterauthComponent } from './components/charterauth/charterauth.component';
 const appRoutes: Routes = [
     {
         path : '',
-        redirectTo: '/login',
+        redirectTo: '/charterauth',
         pathMatch: 'full'
     },
     {
-        path: 'login',
-        component: LoginComponent
+        path: 'charterauth',
+        component: CharterauthComponent
     },
     {
         path: 'addUser',

@@ -3,6 +3,8 @@ import { NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
+import {RouterModule, Routes} from "@angular/router";
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
@@ -22,6 +24,7 @@ import { AddNewCharteruserComponent } from './components/add-new-charteruser/add
 import { UserListComponent } from './components/user-list/user-list.component';
 import { VeiwUserComponent } from './components/veiw-user/veiw-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { CharterauthComponent } from './components/charterauth/charterauth.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     AddNewCharteruserComponent,
     UserListComponent,
     VeiwUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    CharterauthComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,8 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     CharteruserService,
     GetUserListService,
     GetUserService,
-    EditUserService
+    EditUserService,
+     {provide: LocationStrategy, useClass: HashLocationStrategy}
 
   ],
   bootstrap: [AppComponent]

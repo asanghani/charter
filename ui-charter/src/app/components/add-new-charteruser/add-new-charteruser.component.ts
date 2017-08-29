@@ -32,7 +32,7 @@ export class AddNewCharteruserComponent implements OnInit {
         }
     )
   }
-  ngOnInit() {
+   ngOnInit() {
     this.loginService.checkSession().subscribe(
       res => {
         this.loggedIn=true;
@@ -43,6 +43,6 @@ export class AddNewCharteruserComponent implements OnInit {
         location.reload();
       }
     );
-  }
+   }
 
 }
