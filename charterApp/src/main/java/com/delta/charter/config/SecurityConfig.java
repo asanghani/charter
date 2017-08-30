@@ -10,9 +10,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 import org.springframework.session.web.http.HeaderHttpSessionStrategy;
 import org.springframework.session.web.http.HttpSessionStrategy;
 
@@ -44,29 +46,50 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	
 	//*****************************************Method is use for external web-server
-	@Override
+	/*@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().cors().disable().httpBasic().and().authorizeRequests()
 		.antMatchers("/admin").access("hasRole('ROLE_ADMIN')") 
 		.antMatchers("/checkSession").access("hasRole('ROLE_ADMIN')")
 		.antMatchers("/charteruser/*").permitAll() 
 		.anyRequest().authenticated(); 
-	}
+	}*/
+	
 	
 	//******************************************Method is use for Internal web-server
-	/*	@Override
-		protected void configure(HttpSecurity http) throws Exception {
-			http.csrf().disable().cors().disable().httpBasic().and().authorizeRequests()
-			.antMatchers("/admin").access("hasRole('ROLE_ADMIN')") 
-			.antMatchers("/checkSession").access("hasRole('ROLE_ADMIN')")
-			.antMatchers("/charteruser/*").permitAll() 
-			.anyRequest().authenticated(); 
-		  .antMatchers(PUBLIC_MATCHERS).permitAll()
-	       .and()
-			.formLogin()
-	        .loginPage("/index.html")
-	        .permitAll(); 
-		}*/
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+	System.out.println("test********************************************************");
+	http.csrf().disable().cors().disable().httpBasic().and().authorizeRequests()
+	
+	.antMatchers("/index.html/checkSession").access("hasRole('ROLE_ADMIN')") 
+	.antMatchers("/token").permitAll() 
+	.antMatchers("/checkSession").access("hasRole('ROLE_ADMIN')")
+	.antMatchers("/charteruser/*").permitAll()
+
+	.antMatchers(PUBLIC_MATCHERS).permitAll()
+	//.anyRequest().authenticated();   
+	.and()
+	.formLogin()
+	.loginPage("/index.html")
+	.permitAll();
+	/*.and()
+	.logout()
+    .logoutUrl("/")
+    .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
+    .deleteCookies("JSESSIONID")
+    .permitAll(); */
+	}
+	
+	private static final String[] PUBLIC_MATCHERS = {
+		"/fontawesome-webfont.*.*",	
+		"/**/*.js"
+		/*"/resources/**",
+		"/css/**",
+		"/image/**",*/
+    };
+			
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 		
@@ -76,11 +99,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.authoritiesByUsernameQuery(
 			    "select username, role from user_roles where username=?");
 	}	
-	
+	/* @Override
+	    public void configure(WebSecurity webSecurity) throws Exception
+	    {
+	        webSecurity
+	            .ignoring()
+	                // ... whatever is here is ignored by All of Spring Security
+	    }*/
 	@Bean
 	public HttpSessionStrategy httpSessionStrategy(){
 		return new HeaderHttpSessionStrategy();
 	}
+	
 }
 
 
