@@ -19,8 +19,7 @@ export class NavBarComponent implements OnInit {
   logout() {
     this.loginService.logout().subscribe(
       res => {
-       localStorage.setItem('xAuthToken', '');
-      localStorage.setItem('randid', '');
+       localStorage.clear();
         this.loggedIn=false;
        location.reload();
       },
