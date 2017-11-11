@@ -58,6 +58,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			"/js/**",
 			"/image/**",
 			"/charteruser/**",
+			"/checkSession",
+			"/user/logout",
 			/*"/token",
 			"/checkSession",
 			"/user/logout",*/

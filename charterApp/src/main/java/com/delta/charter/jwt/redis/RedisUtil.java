@@ -18,7 +18,7 @@ public enum RedisUtil {
         try{
             jedis = pool.getResource();
             jedis.sadd(key, value);
-            jedis.expire(key, 60);
+            jedis.expire(key, 360);
         } finally {
             if (jedis != null) {
                 jedis.close();
