@@ -69,12 +69,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().cors().disable().httpBasic().and()
 		.authorizeRequests().antMatchers(PUBLIC_MATCHERS).permitAll().anyRequest().authenticated();
-	}
+	} */
 	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userSecurityService).passwordEncoder(passwordEncoder());
-	}*/
+	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
